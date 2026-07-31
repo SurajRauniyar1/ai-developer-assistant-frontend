@@ -20,7 +20,12 @@ import {
 import { useAuth } from "../../context/AuthContext";
 import { useConversation } from "../../context/ConversationContext";
 
-const Sidebar = () => {
+interface SidebarProps {
+  onConversationSelected?: () => void;
+}
+
+const Sidebar = ({ onConversationSelected }: SidebarProps) => {
+
   const { logout } = useAuth();
 const [search, setSearch] = useState("");
   const {
@@ -166,7 +171,7 @@ const filteredConversations = conversations.filter((conversation) =>
 
       {/* Header */}
 
-      <div className="border-b border-gray-800 px-4 py-4">
+      <div className="border-b border-gray-800 px-3 py-4 sm:px-4">
 
         <div className="flex items-center gap-3">
 
@@ -215,7 +220,7 @@ const filteredConversations = conversations.filter((conversation) =>
 
       {/* Conversation List */}
 
-<div className="flex-1 overflow-y-auto p-3 space-y-2">
+<div className="flex-1 overflow-y-auto  p-2 sm:p-3  space-y-2">
 
   {filteredConversations.length === 0 ? (
 
@@ -235,10 +240,11 @@ const filteredConversations = conversations.filter((conversation) =>
         }`}
       >
         <div
-          className="flex cursor-pointer items-center justify-between px-3 py-3"
-          onClick={() =>
-            setSelectedConversation(conversation)
-          }
+          className="flex min-h-[52px] cursor-pointer items-center justify-between rounded-xl px-3 py-3"
+          onClick={() =>{
+            setSelectedConversation(conversation);
+            onConversationSelected?.();
+          }}
         >
           <div className="flex min-w-0 flex-1 items-center gap-3">
 
@@ -286,7 +292,15 @@ const filteredConversations = conversations.filter((conversation) =>
                   : conversation.id
               );
             }}
-            className="rounded-lg p-1 opacity-0 transition hover:bg-gray-700 group-hover:opacity-100"
+            className="
+  rounded-lg
+  p-2
+  opacity-100
+  transition
+  hover:bg-gray-700
+  sm:opacity-0
+  sm:group-hover:opacity-100
+"
           >
             <MoreVertical
               size={16}
@@ -354,7 +368,7 @@ const filteredConversations = conversations.filter((conversation) =>
       {deleteId && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/50">
 
-          <div className="w-[360px] rounded-2xl bg-gray-900 p-6 shadow-2xl">
+         <div className="mx-4 w-full max-w-sm rounded-2xl bg-gray-900 p-6 shadow-2xl">
 
             <div className="mb-4 flex items-center justify-between">
 
