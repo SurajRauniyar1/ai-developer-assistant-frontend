@@ -15,11 +15,8 @@ const ChatInput = ({ onSend }: Props) => {
 
     if (!textarea) return;
 
-    textarea.style.height = "auto";
-    textarea.style.height = `${Math.min(
-      textarea.scrollHeight,
-      180
-    )}px`;
+    textarea.style.height = "0px";
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 160)}px`;
   }, [message]);
 
   const handleSend = () => {
@@ -28,7 +25,6 @@ const ChatInput = ({ onSend }: Props) => {
     if (!text) return;
 
     onSend(text);
-
     setMessage("");
   };
 
@@ -42,60 +38,66 @@ const ChatInput = ({ onSend }: Props) => {
   };
 
   return (
-  <div className="border-t border-gray-800 bg-gray-950 p-2 sm:p-4">
-    <div className="flex items-end gap-2 rounded-2xl border border-gray-700 bg-gray-900 p-2 sm:gap-3 sm:p-3">
-      <textarea
-        ref={textareaRef}
-        rows={1}
-        value={message}
-        placeholder="Ask anything..."
-        onChange={(e) => setMessage(e.target.value)}
-        onKeyDown={handleKeyDown}
-        className="
-          max-h-44
-          flex-1
-          resize-none
-          overflow-y-auto
-          bg-transparent
-          px-2
-          py-2
-          text-sm
-          text-white
-          outline-none
-          placeholder:text-gray-500
-          sm:text-base
-        "
-      />
+    <div
+      className="
+        border-t
+        border-gray-800
+        bg-gray-950
+        p-3
+        pb-[calc(env(safe-area-inset-bottom)+12px)]
+      "
+    >
+      <div className="flex items-end gap-2 rounded-2xl border border-gray-700 bg-gray-900 p-2">
+        <textarea
+          ref={textareaRef}
+          rows={1}
+          value={message}
+          placeholder="Ask anything..."
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={handleKeyDown}
+          className="
+            flex-1
+            resize-none
+            overflow-y-auto
+            bg-transparent
+            px-2
+            py-2
+            text-sm
+            text-white
+            outline-none
+            placeholder:text-gray-500
+            max-h-40
+          "
+        />
 
-      <button
-        onClick={handleSend}
-        disabled={!message.trim()}
-        className="
-          flex
-          h-10
-          w-10
-          items-center
-          justify-center
-          rounded-xl
-          bg-blue-600
-          text-white
-          transition
-          hover:bg-blue-700
-          disabled:cursor-not-allowed
-          disabled:opacity-50
-          sm:h-11
-          sm:w-11
-        "
-      >
-        <SendHorizontal size={18} />
-      </button>
+        <button
+          onClick={handleSend}
+          disabled={!message.trim()}
+          className="
+            flex
+            h-11
+            w-11
+            shrink-0
+            items-center
+            justify-center
+            rounded-xl
+            bg-blue-600
+            text-white
+            transition-colors
+            hover:bg-blue-700
+            disabled:cursor-not-allowed
+            disabled:opacity-50
+          "
+        >
+          <SendHorizontal size={18} />
+        </button>
+      </div>
+
+      <p className="mt-2 hidden text-center text-xs text-gray-500 md:block">
+        Press <kbd>Enter</kbd> to send • <kbd>Shift + Enter</kbd> for a new line
+      </p>
     </div>
-
-    <p className="mt-2 hidden text-center text-xs text-gray-500 sm:block">
-      Press <kbd>Enter</kbd> to send • <kbd>Shift + Enter</kbd> for a new line
-    </p>
-  </div>
-);
+  );
 };
 
 export default ChatInput;

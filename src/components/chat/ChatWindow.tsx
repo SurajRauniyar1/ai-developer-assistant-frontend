@@ -157,10 +157,10 @@ const ChatWindow = () => {
       </div>
 
       {/* Fixed input */}
-      <div className="shrink-0 border-t border-gray-800 bg-gray-950 p-3 sm:p-4">
+            {/* Fixed Input */}
+      <div className="shrink-0 bg-gray-950">
         <ChatInput onSend={handleSend} />
       </div>
-
     </div>
   );
 };
