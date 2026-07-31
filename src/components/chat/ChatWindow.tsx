@@ -131,7 +131,7 @@ const ChatWindow = () => {
       </div>
 
       {/* Scrollable messages */}
-      <div className="min-h-0 flex-1 overflow-y-auto px-3 py-4 sm:px-6 space-y-4">
+      <div className="min-h-0 min-w-0 flex-1 overflow-x-hidden overflow-y-auto px-3 py-4 space-y-4 sm:px-6">
 
         {loading ? (
           <div className="text-center text-gray-400">
