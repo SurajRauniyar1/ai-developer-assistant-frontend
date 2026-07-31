@@ -14,9 +14,9 @@ import {
 
 const ChatWindow = () => {
   const {
-  selectedConversation,
-  refreshConversations,
-} = useConversation();
+    selectedConversation,
+    refreshConversations,
+  } = useConversation();
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
@@ -91,9 +91,9 @@ const ChatWindow = () => {
             prev.map((msg) =>
               msg.id === assistantMessage.id
                 ? {
-                    ...msg,
-                    content: msg.content + chunk,
-                  }
+                  ...msg,
+                  content: msg.content + chunk,
+                }
                 : msg
             )
           );
@@ -101,12 +101,12 @@ const ChatWindow = () => {
       );
 
       const history = await getMessages(
-       selectedConversation.id
+        selectedConversation.id
       );
 
       setMessages(history);
 
-await refreshConversations();
+      await refreshConversations();
 
       setMessages(history);
     } catch (error) {
@@ -123,16 +123,31 @@ await refreshConversations();
       </div>
     );
   }
-
   return (
     <div className="flex h-full flex-col bg-gray-950">
-      <div className="border-b border-gray-800 p-4">
-        <h2 className="text-lg font-semibold">
+
+      {/* Header */}
+
+      <div className="border-b border-gray-800 px-4 py-3 sm:px-6">
+
+        <h2 className="truncate text-base font-semibold sm:text-lg">
           {selectedConversation.title}
         </h2>
+
       </div>
 
-      <div className="flex-1 overflow-y-auto space-y-4 p-6">
+      {/* Messages */}
+
+      <div
+        className="
+        flex-1
+        overflow-y-auto
+        px-3
+        py-4
+        sm:px-6
+        space-y-4
+      "
+      >
         {loading ? (
           <div className="text-center text-gray-400">
             Loading...
@@ -154,11 +169,17 @@ await refreshConversations();
         {typing && <TypingIndicator />}
 
         <div ref={bottomRef} />
+
       </div>
 
-      <ChatInput onSend={handleSend} />
+      {/* Sticky Input */}
+
+      <div className="border-t border-gray-800 bg-gray-950 p-3 sm:p-4">
+
+        <ChatInput onSend={handleSend} />
+
+      </div>
+
     </div>
   );
-};
-
-export default ChatWindow;
+}
