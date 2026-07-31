@@ -15,8 +15,14 @@ const ChatInput = ({ onSend }: Props) => {
 
     if (!textarea) return;
 
-    textarea.style.height = "0px";
-    textarea.style.height = `${Math.min(textarea.scrollHeight, 160)}px`;
+    // Reset height
+    textarea.style.height = "24px";
+
+    // Grow only when needed
+    textarea.style.height = `${Math.min(
+      textarea.scrollHeight,
+      160
+    )}px`;
   }, [message]);
 
   const handleSend = () => {
@@ -47,7 +53,20 @@ const ChatInput = ({ onSend }: Props) => {
         pb-[calc(env(safe-area-inset-bottom)+12px)]
       "
     >
-      <div className="flex items-end gap-2 rounded-2xl border border-gray-700 bg-gray-900 p-2">
+      <div
+        className="
+          flex
+          min-w-0
+          items-end
+          gap-2
+          rounded-2xl
+          border
+          border-gray-700
+          bg-gray-900
+          px-3
+          py-2
+        "
+      >
         <textarea
           ref={textareaRef}
           rows={1}
@@ -56,17 +75,20 @@ const ChatInput = ({ onSend }: Props) => {
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyDown}
           className="
+            min-w-0
+            min-h-[24px]
+            max-h-40
             flex-1
             resize-none
             overflow-y-auto
             bg-transparent
             px-2
-            py-2
+            py-1
             text-base
+            leading-6
             text-white
             outline-none
             placeholder:text-gray-500
-            max-h-40
           "
         />
 
