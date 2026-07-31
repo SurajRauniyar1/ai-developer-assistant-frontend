@@ -18,7 +18,7 @@ const ChatMessage = ({ role, content }: Props) => {
 
   return (
     <div
-      className={`mb-6 flex items-start gap-3 ${
+      className={`mb-4 sm:mb-6 flex items-start gap-3 ${
         isUser ? "justify-end" : "justify-start"
       }`}
     >
@@ -29,7 +29,7 @@ const ChatMessage = ({ role, content }: Props) => {
       )}
 
       <div
-        className={`max-w-[780px] rounded-2xl border px-5 py-4 shadow-md ${
+        className={`w-fit max-w-[85%] sm:max-w-[80%] lg:max-w-[780px] rounded-2xl border px-3 py-3 sm:px-5 sm:py-4 shadow-md break-words ${
           isUser
             ? "border-blue-500 bg-blue-600 text-white"
             : "border-gray-700 bg-[#1F2937] text-gray-100"
@@ -64,11 +64,13 @@ const ChatMessage = ({ role, content }: Props) => {
                       style={oneDark as any}
                       PreTag="div"
                       customStyle={{
-                        margin: 0,
-                        borderRadius: 0,
-                        background: "#0F172A",
-                        padding: "18px",
-                      }}
+                      margin: 0,
+                      borderRadius: 0,
+                      background: "#0F172A",
+                      padding: "14px",
+                      overflowX: "auto",
+                      fontSize: "0.9rem",
+                        }}
                     >
                       {code}
                     </SyntaxHighlighter>
@@ -77,7 +79,7 @@ const ChatMessage = ({ role, content }: Props) => {
               }
 
               return (
-                <code className="rounded bg-gray-700 px-1.5 py-0.5 text-sm">
+                <code className="rounded bg-gray-700 px-1.5 py-0.5 text-xs sm:text-sm font-mono">
                   {children}
                 </code>
               );

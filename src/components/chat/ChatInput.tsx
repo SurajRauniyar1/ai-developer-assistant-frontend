@@ -42,32 +42,60 @@ const ChatInput = ({ onSend }: Props) => {
   };
 
   return (
-    <div className="border-t border-gray-800 bg-gray-950 p-4">
-      <div className="flex items-end gap-3 rounded-2xl border border-gray-700 bg-gray-900 p-3">
-        <textarea
-          ref={textareaRef}
-          rows={1}
-          value={message}
-          placeholder="Ask anything..."
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={handleKeyDown}
-          className="max-h-44 flex-1 resize-none overflow-y-auto bg-transparent text-white outline-none placeholder:text-gray-500"
-        />
+  <div className="border-t border-gray-800 bg-gray-950 p-2 sm:p-4">
+    <div className="flex items-end gap-2 rounded-2xl border border-gray-700 bg-gray-900 p-2 sm:gap-3 sm:p-3">
+      <textarea
+        ref={textareaRef}
+        rows={1}
+        value={message}
+        placeholder="Ask anything..."
+        onChange={(e) => setMessage(e.target.value)}
+        onKeyDown={handleKeyDown}
+        className="
+          max-h-44
+          flex-1
+          resize-none
+          overflow-y-auto
+          bg-transparent
+          px-2
+          py-2
+          text-sm
+          text-white
+          outline-none
+          placeholder:text-gray-500
+          sm:text-base
+        "
+      />
 
-        <button
-          onClick={handleSend}
-          disabled={!message.trim()}
-          className="rounded-xl bg-blue-600 p-3 text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          <SendHorizontal size={18} />
-        </button>
-      </div>
-
-      <p className="mt-2 text-center text-xs text-gray-500">
-        Press <kbd>Enter</kbd> to send • <kbd>Shift + Enter</kbd> for a new line
-      </p>
+      <button
+        onClick={handleSend}
+        disabled={!message.trim()}
+        className="
+          flex
+          h-10
+          w-10
+          items-center
+          justify-center
+          rounded-xl
+          bg-blue-600
+          text-white
+          transition
+          hover:bg-blue-700
+          disabled:cursor-not-allowed
+          disabled:opacity-50
+          sm:h-11
+          sm:w-11
+        "
+      >
+        <SendHorizontal size={18} />
+      </button>
     </div>
-  );
+
+    <p className="mt-2 hidden text-center text-xs text-gray-500 sm:block">
+      Press <kbd>Enter</kbd> to send • <kbd>Shift + Enter</kbd> for a new line
+    </p>
+  </div>
+);
 };
 
 export default ChatInput;
