@@ -23,7 +23,7 @@ const DashboardPage = () => {
       )}
 
       {/* Desktop Sidebar */}
-      <aside className="hidden w-[280px] border-r border-gray-800 lg:block">
+    <aside className="hidden w-[280px] shrink-0 border-r border-gray-800 lg:block">
         <Sidebar />
       </aside>
 
@@ -38,7 +38,7 @@ const DashboardPage = () => {
       </aside>
 
       {/* Main Content */}
-      <div className="flex min-h-0 flex-1 flex-col">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
         {/* Mobile Header */}
        <header className="sticky top-0 z-30 flex items-center justify-between border-b border-gray-800 bg-gray-900 px-4 py-3 lg:hidden">
           <button
@@ -61,13 +61,13 @@ const DashboardPage = () => {
         </header>
 
         {/* Chat */}
-        <div className="min-h-0 flex-1 overflow-hidden">
-          <ChatWindow />
-        </div>
+        <div className="min-h-0 min-w-0 flex-1 overflow-hidden">
+    <ChatWindow />
+</div>
       </div>
 
       {/* Desktop Documents */}
-      <aside className="hidden w-[320px] border-l border-gray-800 xl:block">
+      <aside className="hidden w-[320px] shrink-0 border-l border-gray-800 xl:block">
         <DocumentPanel />
       </aside>
 
