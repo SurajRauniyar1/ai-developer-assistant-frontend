@@ -38,7 +38,7 @@ const DashboardPage = () => {
       </aside>
 
       {/* Main Content */}
-      <div className="flex flex-1 flex-col">
+      <div className="flex min-h-0 flex-1 flex-col">
         {/* Mobile Header */}
        <header className="sticky top-0 z-30 flex items-center justify-between border-b border-gray-800 bg-gray-900 px-4 py-3 lg:hidden">
           <button
@@ -61,7 +61,7 @@ const DashboardPage = () => {
         </header>
 
         {/* Chat */}
-        <div className="flex-1 overflow-hidden">
+        <div className="min-h-0 flex-1 overflow-hidden">
           <ChatWindow />
         </div>
       </div>

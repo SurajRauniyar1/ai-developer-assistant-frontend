@@ -124,7 +124,7 @@ const ChatWindow = () => {
     );
   }
   return (
-    <div className="flex h-full flex-col bg-gray-950">
+    <div className="flex h-full min-h-0 flex-col bg-gray-950">
 
       {/* Header */}
 
