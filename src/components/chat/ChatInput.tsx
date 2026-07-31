@@ -62,7 +62,7 @@ const ChatInput = ({ onSend }: Props) => {
             bg-transparent
             px-2
             py-2
-            text-sm
+            text-base
             text-white
             outline-none
             placeholder:text-gray-500
