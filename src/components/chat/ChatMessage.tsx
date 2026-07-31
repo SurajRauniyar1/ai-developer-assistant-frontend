@@ -18,7 +18,7 @@ const ChatMessage = ({ role, content }: Props) => {
 
   return (
     <div
-      className={`mb-4 sm:mb-6 flex items-start gap-3 ${
+  className={`mb-4 flex min-w-0 items-start gap-3 sm:mb-6 ${
         isUser ? "justify-end" : "justify-start"
       }`}
     >
@@ -29,7 +29,7 @@ const ChatMessage = ({ role, content }: Props) => {
       )}
 
       <div
-        className={`w-fit max-w-[85%] sm:max-w-[80%] lg:max-w-[780px] rounded-2xl border px-3 py-3 sm:px-5 sm:py-4 shadow-md break-words ${
+        className={`min-w-0 w-full max-w-[85%] sm:max-w-[80%] lg:max-w-[780px] rounded-2xl border px-3 py-3 sm:px-5 sm:py-4 shadow-md break-words ${
           isUser
             ? "border-blue-500 bg-blue-600 text-white"
             : "border-gray-700 bg-[#1F2937] text-gray-100"
@@ -44,7 +44,7 @@ const ChatMessage = ({ role, content }: Props) => {
 
               if (match) {
                 return (
-                  <div className="my-4 overflow-hidden rounded-xl border border-gray-700">
+                 <div className="my-4 max-w-full overflow-hidden rounded-xl border border-gray-700">
                     <div className="flex items-center justify-between bg-[#111827] px-4 py-2">
                       <span className="text-xs uppercase tracking-wide text-gray-400">
                         {match[1]}
@@ -60,20 +60,22 @@ const ChatMessage = ({ role, content }: Props) => {
                     </div>
 
                     <SyntaxHighlighter
-                      language={match[1]}
-                      style={oneDark as any}
-                      PreTag="div"
-                      customStyle={{
-                      margin: 0,
-                      borderRadius: 0,
-                      background: "#0F172A",
-                      padding: "14px",
-                      overflowX: "auto",
-                      fontSize: "0.9rem",
-                        }}
-                    >
-                      {code}
-                    </SyntaxHighlighter>
+  language={match[1]}
+  style={oneDark as any}
+  PreTag="div"
+  wrapLongLines={false}
+  customStyle={{
+    margin: 0,
+    borderRadius: 0,
+    background: "#0F172A",
+    padding: "14px",
+    overflowX: "auto",
+    maxWidth: "100%",
+    fontSize: "0.9rem",
+  }}
+>
+  {code}
+</SyntaxHighlighter>
                   </div>
                 );
               }
