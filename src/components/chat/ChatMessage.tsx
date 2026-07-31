@@ -29,12 +29,25 @@ const ChatMessage = ({ role, content }: Props) => {
       )}
 
       <div
-        className={`min-w-0 inline-block max-w-[75%] sm:max-w-[70%] lg:max-w-[780px] rounded-2xl border px-3 py-3 sm:px-5 sm:py-4 shadow-md break-words ${
-          isUser
-            ? "border-blue-500 bg-blue-600 text-white"
-            : "border-gray-700 bg-[#1F2937] text-gray-100"
-        }`}
-      >
+       <div
+  className={`
+    inline-block
+    min-w-0
+    ${isUser ? "max-w-[70%] sm:max-w-[65%]" : "max-w-[90%] sm:max-w-[80%]"}
+    lg:max-w-[780px]
+    rounded-2xl
+    border
+    px-4
+    py-3
+    shadow-md
+    break-words
+    ${
+      isUser
+        ? "border-blue-500 bg-blue-600 text-white"
+        : "border-gray-700 bg-[#1F2937] text-gray-100"
+    }
+  `}
+>
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
