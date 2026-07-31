@@ -128,13 +128,11 @@ const ChatWindow = () => {
 
       {/* Header */}
 
-      <div className="border-b border-gray-800 px-4 py-3 sm:px-6">
-
-        <h2 className="truncate text-base font-semibold sm:text-lg">
-          {selectedConversation.title}
-        </h2>
-
-      </div>
+     <div className="hidden border-b border-gray-800 px-4 py-3 sm:block sm:px-6">
+  <h2 className="truncate text-base font-semibold sm:text-lg">
+    {selectedConversation.title}
+  </h2>
+</div>
 
       {/* Messages */}
 
