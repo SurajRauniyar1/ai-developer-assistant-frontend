@@ -10,7 +10,7 @@ const DashboardPage = () => {
   const [documentOpen, setDocumentOpen] = useState(false);
 
   return (
-    <div className="flex h-dvh overflow-hidden bg-gray-950 text-white">
+   <div className="flex h-full overflow-hidden bg-gray-950 text-white">
       {/* Mobile Overlay */}
       {(sidebarOpen || documentOpen) && (
         <div
